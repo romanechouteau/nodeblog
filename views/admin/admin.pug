@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-html(lang="fr")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel='stylesheet', href='style.css')
-        link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,900&display=swap')
-        title Document
-    body
-        nav
-            a(href='/' class='link blogtitle')
-                h1 Mon blog
-            a(class='link admin' href='/admin') Administration
+extends ../layout.pug
+ 
+block variables
+    - let title = 'Administration';
+ 
+block content
         section
             h2 Administration
             a(class='button' href='/admin/write') Créer un article
@@ -25,7 +18,8 @@ html(lang="fr")
                 tr
                     td 1
                     td 26/03/2020 - 12:27
-                    td Titre
+                    td 
+                        a(class='link' href='/article') Titre
                     td Romane
                     td Catégorie
                     td
@@ -34,7 +28,8 @@ html(lang="fr")
                 tr
                     td 1
                     td 26/03/2020 - 12:27
-                    td Titre
+                    td
+                        a(class='link' href='/article') Titre
                     td Romane
                     td Catégorie
                     td

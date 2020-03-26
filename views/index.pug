@@ -1,29 +1,22 @@
-<!DOCTYPE html>
-html(lang="fr")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel='stylesheet', href='style.css')
-        link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,900&display=swap')
-        title Document
-    body
-        //- h1 Salut #{prenom}
+extends layout.pug
+ 
+block variables
+    - let title = 'Accueil';
+ 
+block content
+    section
+        h2 Les derniers articles
+        article
+            p(class='small') 26/03/2020 - 11:14
+            h3 Titre
+            p(class='small') Romane 
+                
+            p Le Lorem Ipsum est simplement...
+
+            p(class='small') Catégorie
+            a(class='button' href='article') Voir plus
+
+                //- h1 Salut #{prenom}
         //- ul
         //-     each val in [1,2,3,4,5]
         //-         li=val
-        nav
-            a(href='/' class='link blogtitle')
-                h1 Mon blog
-            a(class='link admin' href='admin') Administration
-        section
-            h2 Les derniers articles
-            article
-                p(class='small') 26/03/2020 - 11:14
-                h3 Titre
-                p(class='small') Romane
-                
-                
-                p Le Lorem Ipsum est simplement...
-
-                p(class='small') Catégorie
-                a(class='button' href='article') Voir plus

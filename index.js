@@ -7,6 +7,7 @@ const blogRouter = require('./blog.router');
 
 // Indique à Express que le moteur de templating à utiliser sera Pug
 app.set('view engine', 'pug');
+
 // Indique à Express le dossier où se trouvent 
 app.set('views', './views');
 
