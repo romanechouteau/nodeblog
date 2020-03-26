@@ -16,6 +16,9 @@ const HOST = 'localhost';
 // Traite toutes les routes pour la partie front-office
 app.use('/', blogRouter);
 
+// serveur statique
+app.use(express.static('./public'));
+
 const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true

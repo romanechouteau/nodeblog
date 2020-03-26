@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+html(lang="fr")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet', href='style.css')
+        link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,900&display=swap')
+        title Document
+    body
+        nav
+            a(href='/' class='link blogtitle')
+                h1 Mon blog
+            a(class='link admin' href='/admin') Administration
+        section
+            h2 Administration
+            a(class='button' href='/admin/write') Créer un article
+            table
+                tr
+                    th ID
+                    th Date
+                    th Titre
+                    th Auteur
+                    th Catégorie
+                    th Actions
+                tr
+                    td 1
+                    td 26/03/2020 - 12:27
+                    td Titre
+                    td Romane
+                    td Catégorie
+                    td
+                        a(class='button' href='/admin/edit') Modifier
+                        a(class='button danger' href='/admin/write') Supprimer
+                tr
+                    td 1
+                    td 26/03/2020 - 12:27
+                    td Titre
+                    td Romane
+                    td Catégorie
+                    td
+                        a(class='button' href='/admin/edit') Modifier
+                        a(class='button danger' href='/admin/write') Supprimer
