@@ -8,19 +8,14 @@ block variables
 block content
     section
         h2 Les derniers articles
-        article
-            p(class='small') 26/03/2020 - 11:14
-            h3 Titre
-            p(class='small') Romane 
-                
-            p Le Lorem Ipsum est simplement...
+        each val in articles
+            article
+                p(class='small')=val["dateCreated"].getDate().toString().padStart(2, '0') + "/" + val["dateCreated"].getMonth() + "/" + val["dateCreated"].getFullYear() + " - " + val["dateCreated"].getHours().toString().padStart(2, '0') + ":" + val["dateCreated"].getMinutes().toString().padStart(2, '0')
+                a(class='link' href='article?id='+val["id"])
+                    h3=val["title"]
+                p(class='small')=val["author"]["name"]
+                    
+                p=val["content"].length > 60 ? val["content"].slice(0,60) + "..." : val["content"]
 
-            p(class='small') Catégorie
-            a(class='button' href='article') Voir plus
-
-            p articles : #{articles}
-
-            //- h1 Salut #{prenom}
-            //- ul
-            //-     each val in [1,2,3,4,5]
-            //-         li=val
+                p(class='small')=val["category"]["title"]
+                a(class='button' href='article?id='+val["id"]) Voir plus

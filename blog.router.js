@@ -11,7 +11,6 @@ const Author = require('./models/Author.model');
 // Index
 blogRouteur.get('/', (request, response) => {
     Article.find().populate('author category').exec().then(articles => {
-        console.log(articles);
         response.render('index', { articles });
     }).catch(error => console.log(error.message)) 
 });

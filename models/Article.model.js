@@ -9,7 +9,7 @@ var ArticleSchema = new Schema({
     content: { type : String, required : true},
     author :  { type : String, required : true, ref : 'Author' },
     category : { type : String, required : true, ref : 'Category' }
-});
+}, {collection:'Articles'});
 
 var Article = mongoose.model('Article', ArticleSchema);
 module.exports = Article;

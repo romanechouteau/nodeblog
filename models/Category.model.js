@@ -5,7 +5,7 @@ const shortid = require('shortid');
 var CategorySchema = new Schema({
     _id: {type: String, default: shortid.generate},
     title:  { type : String, required : true},
-});
+}, {collection:'Categories'});
 
 var Category = mongoose.model('Category', CategorySchema);
 module.exports = Category;
