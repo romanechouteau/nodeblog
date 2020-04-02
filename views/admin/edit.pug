@@ -1,30 +1,32 @@
+//- Modifier un article
+
 extends ../layout.pug
  
 block variables
     - let title = 'Modifier un article';
  
 block content
-        section
-            h2 Modifier un article
-            a(class='link' href='/admin') ← Retour à l'espace d'administration
-            form(action="")
-                h2 Titre
-                div
-                    label(for="titre") Titre :
-                    input(type="text" name='titre' id='titre' placeholder='Titre de l\'article' value='Titre')
-                div
-                    label(for="categorie") Catégorie :
-                    select(name="categorie" id='categorie')
-                        option(value="1") Informatique
-                        option(value="2" selected) Test
-                        option(value="3") Test 2
-                div
-                    label(for='contenu') Contenu :
-                    textarea(name="contenu" id='contenu' rows="10" placeholder='Ecrivez le texte de l\'article ici') Blablabla
-                div
-                    label(for="categorie") Auteur :
-                    select(name="categorie" id='categorie')
-                        option(value="1") Arthur Rimbaut
-                        option(value="2" selected) Romane
-                        option(value="3") Romane 2
-                input(type="submit" value='Modifier' class='button')
+    section
+        h2 Modifier un article
+        a(class='link' href='/admin') ← Retour à l'espace d'administration
+        form(action="")
+            h2 Titre
+            div
+                label(for="titre") Titre :
+                input(type="text" name='titre' id='titre' placeholder='Titre de l\'article' value='Titre')
+            div
+                label(for="categorie") Catégorie :
+                select(name="categorie" id='categorie')
+                    option(value="1") Informatique
+                    option(value="2" selected) Test
+                    option(value="3") Test 2
+            div
+                label(for='contenu') Contenu :
+                textarea(name="contenu" id='contenu' rows="10" placeholder='Ecrivez le texte de l\'article ici') Blablabla
+            div
+                label(for="categorie") Auteur :
+                select(name="categorie" id='categorie')
+                    option(value="1") Arthur Rimbaut
+                    option(value="2" selected) Romane
+                    option(value="3") Romane 2
+            input(type="submit" value='Modifier' class='button')

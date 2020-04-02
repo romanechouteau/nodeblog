@@ -1,37 +1,39 @@
+//- Administration des articles
+
 extends ../layout.pug
  
 block variables
     - let title = 'Administration';
  
 block content
-        section
-            h2 Administration
-            a(class='button' href='/admin/write') Créer un article
-            table
-                tr
-                    th ID
-                    th Date
-                    th Titre
-                    th Auteur
-                    th Catégorie
-                    th Actions
-                tr
-                    td 1
-                    td 26/03/2020 - 12:27
-                    td 
-                        a(class='link' href='/article') Titre
-                    td Romane
-                    td Catégorie
-                    td
-                        a(class='button' href='/admin/edit') Modifier
-                        a(class='button danger' href='/admin/write') Supprimer
-                tr
-                    td 1
-                    td 26/03/2020 - 12:27
-                    td
-                        a(class='link' href='/article') Titre
-                    td Romane
-                    td Catégorie
-                    td
-                        a(class='button' href='/admin/edit') Modifier
-                        a(class='button danger' href='/admin/write') Supprimer
+    section
+        h2 Administration
+        a(class='button' href='/admin/write') Créer un article
+        table
+            tr
+                th ID
+                th Date
+                th Titre
+                th Auteur
+                th Catégorie
+                th Actions
+            tr
+                td 1
+                td 26/03/2020 - 12:27
+                td 
+                    a(class='link' href='/article') Titre
+                td Romane
+                td Catégorie
+                td
+                    a(class='button' href='/admin/edit') Modifier
+                    a(class='button danger' href='/admin/write') Supprimer
+            tr
+                td 1
+                td 26/03/2020 - 12:27
+                td
+                    a(class='link' href='/article') Titre
+                td Romane
+                td Catégorie
+                td
+                    a(class='button' href='/admin/edit') Modifier
+                    a(class='button danger' href='/admin/write') Supprimer

@@ -1,3 +1,5 @@
+//- Index : affichage des articles
+
 extends layout.pug
  
 block variables
@@ -16,7 +18,9 @@ block content
             p(class='small') Catégorie
             a(class='button' href='article') Voir plus
 
-                //- h1 Salut #{prenom}
-        //- ul
-        //-     each val in [1,2,3,4,5]
-        //-         li=val
+            p articles : #{articles}
+
+            //- h1 Salut #{prenom}
+            //- ul
+            //-     each val in [1,2,3,4,5]
+            //-         li=val

@@ -25,6 +25,7 @@ const options = {
     useUnifiedTopology: true
 }
 
+// Connexion à mongo db
 mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`, options)
     .then(() => console.log(`Mongoose : connexion établie à Atlas !`))
     .catch((err) => console.error(err));
