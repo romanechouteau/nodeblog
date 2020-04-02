@@ -1,5 +1,7 @@
 const express = require('express');
 
+const bodyParser = require('body-parser');
+
 // Créer un nouvel objet "Routeur"
 const blogRouteur = express.Router();
 
@@ -41,17 +43,22 @@ blogRouteur.get('/admin/write', (request, response) => {
         Category.find().sort('title')
     ])
     .then(([authors, categories]) => response.render('admin/write', { authors, categories }))
-    .catch(error => console.log(error.message))
+    .catch(error => console.log(error.message));
 });
 
 // Créer un article dans la base
 blogRouteur.post('/admin/write', (request, response) => {
-    Promise.all([
-        Author.find().sort('name'),
-        Category.find().sort('title')
-    ])
-    .then(([authors, categories]) => response.render('admin/write', { authors, categories }))
-    .catch(error => console.log(error.message))
+    Article.create({ title: request.body.titre, content: request.body.contenu, author: request.body.auteur, category: request.body.categorie })
+    .then(() => {
+        Article.find().populate('author category').exec()
+        .then(articles => {
+            response.render('admin/admin', { articles });
+        }).catch(error => console.log(error.message))
+    })
+    .catch(error => {
+        error = error.message;
+        response.render('error', { error });
+    });
 });
 
 // Modifier un article

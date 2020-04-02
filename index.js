@@ -6,6 +6,9 @@ const bodyParser = require('body-parser');
 const app = express();
 const blogRouter = require('./blog.router');
 
+// Installation de body parser
+app.use(bodyParser.urlencoded({extended: false}));
+
 // Indique à Express que le moteur de templating à utiliser sera Pug
 app.set('view engine', 'pug');
 
@@ -20,9 +23,6 @@ app.use('/', blogRouter);
 
 // serveur statique
 app.use(express.static('./public'));
-
-// Installation de body parser
-app.use(bodyParser.urlencoded({extended: false}))
 
 const options = {
     useNewUrlParser: true,
