@@ -17,23 +17,14 @@ block content
                 th Auteur
                 th Catégorie
                 th Actions
-            tr
-                td 1
-                td 26/03/2020 - 12:27
-                td 
-                    a(class='link' href='/article') Titre
-                td Romane
-                td Catégorie
-                td
-                    a(class='button' href='/admin/edit') Modifier
-                    a(class='button danger' href='/admin/write') Supprimer
-            tr
-                td 1
-                td 26/03/2020 - 12:27
-                td
-                    a(class='link' href='/article') Titre
-                td Romane
-                td Catégorie
-                td
-                    a(class='button' href='/admin/edit') Modifier
-                    a(class='button danger' href='/admin/write') Supprimer
+            each val in articles
+                tr
+                    td=val["id"]
+                    td=val["dateCreated"].getDate().toString().padStart(2, '0') + "/" + val["dateCreated"].getMonth() + "/" + val["dateCreated"].getFullYear() + " - " + val["dateCreated"].getHours().toString().padStart(2, '0') + ":" + val["dateCreated"].getMinutes().toString().padStart(2, '0')
+                    td 
+                        a(class='link' href='/article/'+val["id"])=val["title"]
+                    td=val["author"]["name"]
+                    td=val["category"]["title"]
+                    td
+                        a(class='button' href='/admin/edit/'+val["id"]) Modifier
+                        a(class='button danger' href='/admin/delete/'+val["id"]) Supprimer

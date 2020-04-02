@@ -9,7 +9,7 @@ block content
     section
         h2 Ecrire un article
         a(class='link' href='/admin') ← Retour à l'espace d'administration
-        form(action="")
+        form(action="/admin/write" method="POST")
             h2 Nouvel article
             div
                 label(for="titre") Titre :
@@ -17,16 +17,14 @@ block content
             div
                 label(for="categorie") Catégorie :
                 select(name="categorie" id='categorie')
-                    option(value="1") Informatique
-                    option(value="2") Test
-                    option(value="3") Test 2
+                    each val in categories
+                        option(value=val["id"])=val["title"]
             div
                 label(for='contenu') Contenu :
                 textarea(name="contenu" id='contenu' rows="10" placeholder='Ecrivez le texte de l\'article ici')
             div
-                label(for="categorie") Auteur :
-                select(name="categorie" id='categorie')
-                    option(value="1") Arthur Rimbaut
-                    option(value="2") Romane
-                    option(value="3") Romane 2
+                label(for="auteur") Auteur :
+                select(name="auteur" id='auteur')
+                    each val in authors
+                        option(value=val["id"])=val["name"]
             input(type="submit" value='Publier' class='button')

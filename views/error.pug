@@ -1,0 +1,14 @@
+//- Affichage d'une erreur
+
+extends layout.pug
+ 
+block variables
+    - let title = 'Erreur';
+ 
+block content
+    section
+        h2 Erreur
+        a(class='link' href='/') ← Retour aux articles
+        article(class='big')
+            p #{error}
+                
