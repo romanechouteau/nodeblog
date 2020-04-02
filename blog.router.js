@@ -23,8 +23,7 @@ blogRouteur.get('/article/:articleId', (request, response) => {
         if (article != null) {
             response.render('article', { article });
         } else {
-            let error = "Cet article n'existe pas."
-            response.render('error', { error });
+            response.render('error', { error : "Cet article n'existe pas." });
         }
     }).catch(error => console.log(error.message)) 
 });
@@ -50,30 +49,46 @@ blogRouteur.get('/admin/write', (request, response) => {
 blogRouteur.post('/admin/write', (request, response) => {
     Article.create({ title: request.body.titre, content: request.body.contenu, author: request.body.auteur, category: request.body.categorie })
     .then(() => {
-        Article.find().populate('author category').exec()
-        .then(articles => {
-            response.render('admin/admin', { articles });
-        }).catch(error => console.log(error.message))
+        response.redirect('/admin');
     })
     .catch(error => {
-        error = error.message;
-        response.render('error', { error });
+        response.render('error', { error : error.message });
     });
 });
 
 // Modifier un article
 blogRouteur.get('/admin/edit/:articleId', (request, response) => {
-    response.render('admin/edit');
+    Promise.all([
+        Author.find().sort('name'),
+        Category.find().sort('title'),
+        Article.findById(request.params["articleId"]).populate('author category').exec()
+    ])
+    .then(([authors, categories,article]) => article != null ? response.render('admin/edit', { authors, categories,article }) : response.render('error', {error : "Cet article n'existe pas."}))
+    .catch(error => console.log(error.message))
+});
+
+// Modifier un article dans la base
+blogRouteur.post('/admin/edit', (request, response) => {
+    Article.findByIdAndUpdate(request.body.id, { title: request.body.titre, content: request.body.contenu, author: request.body.auteur, category: request.body.categorie })
+    .then((article) => {
+        if (article != null) {
+            response.redirect('/admin');
+        } else {
+            response.render('error', { error : "Cet article n'existe pas." });
+        }
+    })
+    .catch(error => {
+        response.render('error', { error : error.message });
+    });
 });
 
 // Supprimer un article
 blogRouteur.get('/admin/delete/:articleId', (request, response) => {
-    Article.findById(request.params["articleId"]).populate('author category').exec().then(article => {
+    Article.findByIdAndDelete(request.params["articleId"]).exec().then(article => {
         if (article != null) {
-            // response.render('article.pug', { article });
+            response.redirect('/admin');
         } else {
-            let error = "Cet article n'existe pas."
-            response.render('error', { error });
+            response.render('error', { error : "Cet article n'existe pas." });
         }
     }).catch(error => console.log(error.message)) 
 });
