@@ -20,7 +20,7 @@ block content
             each val in articles
                 tr
                     td=val["id"]
-                    td=val["dateCreated"].getDate().toString().padStart(2, '0') + "/" + val["dateCreated"].getMonth() + "/" + val["dateCreated"].getFullYear() + " - " + val["dateCreated"].getHours().toString().padStart(2, '0') + ":" + val["dateCreated"].getMinutes().toString().padStart(2, '0')
+                    td=moment(val["dateCreated"]).format('DD/MM/YYYY - hh:mm')
                     td 
                         a(class='link' href='/article/'+val["id"])=val["title"]
                     td=val["author"]["name"]

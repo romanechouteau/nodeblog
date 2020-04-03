@@ -10,7 +10,7 @@ block content
         h2=article["title"]
         a(class='link' href='/') ← Retour aux articles
         article(class='big')
-            p(class='small')=article["dateCreated"].getDate().toString().padStart(2, '0') + "/" + article["dateCreated"].getMonth() + "/" + article["dateCreated"].getFullYear() + " - " + article["dateCreated"].getHours().toString().padStart(2, '0') + ":" + article["dateCreated"].getMinutes().toString().padStart(2, '0')
+            p(class='small')=moment(article["dateCreated"]).format('DD/MM/YYYY - hh:mm')
             h3=article["title"]
             p(class='small')=article["author"]["name"]
             

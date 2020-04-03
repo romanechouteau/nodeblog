@@ -1,4 +1,5 @@
 const express = require('express');
+const moment = require('moment');
 
 const bodyParser = require('body-parser');
 
@@ -13,7 +14,7 @@ const Author = require('./models/Author.model');
 // Index
 blogRouteur.get('/', (request, response) => {
     Article.find().populate('author category').sort({dateCreated:'desc'}).exec().then(articles => {
-        response.render('index', { articles });
+        response.render('index', { articles, moment });
     }).catch(error => console.log(error.message)) 
 });
 
@@ -21,7 +22,7 @@ blogRouteur.get('/', (request, response) => {
 blogRouteur.get('/article/:articleId', (request, response) => {
     Article.findById(request.params["articleId"]).populate('author category').exec().then(article => {
         if (article != null) {
-            response.render('article', { article });
+            response.render('article', { article, moment });
         } else {
             response.render('error', { error : "Cet article n'existe pas." });
         }
@@ -31,7 +32,7 @@ blogRouteur.get('/article/:articleId', (request, response) => {
 // Page admin
 blogRouteur.get('/admin', (request, response) => {
     Article.find().populate('author category').exec().then(articles => {
-        response.render('admin/admin', { articles });
+        response.render('admin/admin', { articles, moment });
     }).catch(error => console.log(error.message)) 
 });
 

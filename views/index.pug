@@ -1,5 +1,4 @@
 //- Index : affichage des articles
-
 extends layout.pug
  
 block variables
@@ -10,7 +9,7 @@ block content
         h2 Les derniers articles
         each val in articles
             article
-                p(class='small')=val["dateCreated"].getDate().toString().padStart(2, '0') + "/" + val["dateCreated"].getMonth() + "/" + val["dateCreated"].getFullYear() + " - " + val["dateCreated"].getHours().toString().padStart(2, '0') + ":" + val["dateCreated"].getMinutes().toString().padStart(2, '0')
+                p(class='small')=moment(val["dateCreated"]).format('DD/MM/YYYY - hh:mm')
                 a(class='link' href='article/'+val["id"])
                     h3=val["title"]
                 p(class='small')=val["author"]["name"]
